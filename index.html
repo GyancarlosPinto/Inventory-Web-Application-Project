@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solstice Equinox Seasonal Online Store</title>
     <script src="app_events/apps.js" defer></script>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
 </head>
 <body>
     <header id="title">
@@ -15,50 +15,57 @@
         </nav>
         <hr />
     </header>
-    <main>
         <form id="new-product-form">
             <div>
                 <label>Product Name</label>
+                <label class="required">*</label>
                 <input type="text" name="productName"/>
             </div>
             <div>
                 <label>Brand Name</label>
+                <label class="required">*</label>
                 <input type="text" name="productBrandName"/>
             </div>
             <div>
                 <label>Product Type</label>
+                <label class="required">*</label>
                 <input type="text" name="productType"/>
             </div>
             <div>
-                <label>Description</label>
-                <textarea name="productDescription"></textarea>
-              </div>
-              <div>
                 <label>Image URL</label>
                 <input type="text" name="productImageUrl" />
               </div>
             <div>
+                <label>Description</label>
+                <label class="required">*</label>
+                <br/>
+                <textarea name="productDescription"></textarea>
+              </div>
+            <div>
                 <label>Price</label>
-                <input type="number" name="productPrice"/>
+                <label class="required">*</label>
+                <input type="number" step="0.01" name="productPrice"/>
             </div>
             <div>
                 <label>In Stock</label>
-                <input type="number" name="inStock"/>
+                <label class="required">*</label>
+                <input type="number" name="productInStock"/>
             </div>
             <div>
                 <label>Season</label>
-                <select>
+                <select name="seasons"> 
                     <option disabled selected>-- Choose Product's Season --</option>
                     <option value="winter">Winter</option>
                     <option value="spring">Spring</option>
                     <option value="summer">Summer</option>
                     <option value="autumn">Autumn</option>
+                    <option value="all-year-round">All Year Round</option>
                 </select>
             </div>
             <input type="submit" />
             <input type="reset" />
             <button type="button" id="removeButton">Remove</button>
         </form>
-    </main>
+        <main></main>
 </body>
 </html>
