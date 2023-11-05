@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solstice Equinox Seasonal Online Store</title>
-    <script src="apps.js" defer></script>
+    <script src="app_events/apps.js" defer></script>
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
+    <header id="title">
         <nav>
             <h1>Solstice Equinox</h1>
         </nav>
@@ -31,11 +31,21 @@
             </div>
             <div>
                 <label>Price</label>
-                <input type="text" name="productPrice"/>
+                <input type="number" name="productPrice"/>
             </div>
             <div>
                 <label>In Stock</label>
-                <input type="text" name="productInStock"/>
+                <input type="number" name="inStock"/>
+            </div>
+            <div>
+                <label>Season</label>
+                <select>
+                    <option disabled selected>-- Choose Product's Season --</option>
+                    <option value="winter">Winter</option>
+                    <option value="spring">Spring</option>
+                    <option value="summer">Summer</option>
+                    <option value="autumn">Autumn</option>
+                </select>
             </div>
             <input type="submit" />
             <input type="reset" />
