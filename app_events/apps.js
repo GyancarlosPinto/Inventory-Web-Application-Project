@@ -108,12 +108,13 @@ formElement.addEventListener("submit", (event) => {
     const img = formElement.productImageUrl.value;
     const description = formElement.productDescription.value;
     const price = formElement.productPrice.value;
+    const quantityAvailable = formElement.productQuantityAvailable.value;
     const inStock = formElement.productInStock.value;
     const seasons = formElement.seasons.value;
 
     const errorMessage = document.querySelector("p");
 
-    if (name === "" || brandName === "" || productType === "" || description === "" || price === 0 || inStock === 0) {
+    if (name === "" || brandName === "" || productType === "" || description === "" || price === 0 || quantityAvailable === 0) {
         errorMessage.textContent = "Please fill out the required fields above!"
     }
 
@@ -126,8 +127,9 @@ formElement.addEventListener("submit", (event) => {
         img,
         description,
         price,
-        inStock,
-        seasons
+        quantityAvailable,
+        seasons,
+        inStock
     })
 })
 
