@@ -8,6 +8,7 @@
     <script src="app_events/apps.js" defer></script>
     <link rel="stylesheet" href="styles/styles.css" />
 </head>
+
 <body>
     <header id="title">
         <nav>
@@ -15,57 +16,62 @@
         </nav>
         <hr />
     </header>
-        <form id="new-product-form">
-            <div>
-                <label>Product Name</label>
-                <label class="required">*</label>
-                <input type="text" name="productName"/>
-            </div>
-            <div>
-                <label>Brand Name</label>
-                <label class="required">*</label>
-                <input type="text" name="productBrandName"/>
-            </div>
-            <div>
-                <label>Product Type</label>
-                <label class="required">*</label>
-                <input type="text" name="productType"/>
-            </div>
-            <div>
-                <label>Image URL</label>
-                <input type="text" name="productImageUrl" />
-              </div>
-            <div>
-                <label>Description</label>
-                <label class="required">*</label>
-                <br/>
-                <textarea name="productDescription"></textarea>
-              </div>
-            <div>
-                <label>Price</label>
-                <label class="required">*</label>
-                <input type="number" step="0.01" name="productPrice"/>
-            </div>
-            <div>
-                <label>In Stock</label>
-                <label class="required">*</label>
-                <input type="number" name="productInStock"/>
-            </div>
-            <div>
-                <label>Season</label>
-                <select name="seasons"> 
-                    <option disabled selected>-- Choose Product's Season --</option>
-                    <option value="winter">Winter</option>
-                    <option value="spring">Spring</option>
-                    <option value="summer">Summer</option>
-                    <option value="autumn">Autumn</option>
-                    <option value="all-year-round">All Year Round</option>
-                </select>
-            </div>
-            <input type="submit" />
-            <input type="reset" />
-            <button type="button" id="removeButton">Remove</button>
-        </form>
-        <main></main>
+    <main></main>
+    <hr />
+    <br />
+    <form id="new-product-form">
+        <div>
+            <label>Product Name</label>
+            <label class="required">*</label>
+            <input type="text" name="productName" placeholder="Enter Product Name..." />
+        </div>
+        <div>
+            <label>Brand Name</label>
+            <label class="required">*</label>
+            <input type="text" name="productBrandName" placeholder="Enter Product Brand Name..." />
+        </div>
+        <div>
+            <label>Product Type</label>
+            <label class="required">*</label>
+            <input type="text" name="productType" placeholder="Enter Product Type..." />
+        </div>
+        <div>
+            <label>Image URL</label>
+            <input type="text" name="productImageUrl" placeholder="Enter Product Image URL..." />
+        </div>
+        <div>
+            <label>Description</label>
+            <label class="required">*</label>
+            <br />
+            <textarea name="productDescription" placeholder="Enter Product Description..."></textarea>
+        </div>
+        <div>
+            <label>Price</label>
+            <label class="required">*</label>
+            <input type="number" step="0.01" name="productPrice" placeholder="Enter Product Price..." />
+        </div>
+        <div>
+            <label>Ouantity Available</label>
+            <label class="required">*</label>
+            <input type="number" name="quantityAvailable" placeholder="Enter Quantity  of Product Available..." />
+        </div>
+        <div>
+            <label>Season</label>
+            <select name="seasons">
+                <option disabled selected>-- Choose Product's Season --</option>
+                <option value="winter">Winter</option>
+                <option value="spring">Spring</option>
+                <option value="summer">Summer</option>
+                <option value="autumn">Autumn</option>
+                <option value="all-year-round">All Year Round</option>
+            </select>
+        </div>
+        <p></p>
+        <br />
+        <input type="submit" />
+        <input type="reset" />
+        <button type="button" id="remove-button">Clear Catalogue</button>
+    </form>
 </body>
+
 </html>
