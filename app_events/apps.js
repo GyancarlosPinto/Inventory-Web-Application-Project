@@ -4,11 +4,34 @@ const productsList = [
         brandName: "Fangsylvania Brewing Company",
         productType: "Kegerator",
         img: "https://images.nightcafe.studio/jobs/0dcuv9GCYC8TXqwlaJEG/0dcuv9GCYC8TXqwlaJEG--1--nqej0.jpg?tr=w-1600,c-at_max",
-        description: "",
-        price: 1392.00,
-        inStock: 79,
+        description: "Keep your lager, ale, stout or IPA cool to the bones during the ghoully season with this Dracula Beer Keg Dispenser Kegerator.",
+        price: `$${1392.00}`,
+        quantityAvailable: 19,
         seasons: "Autumn"
+    },
+
+    {
+        name: "Dia de los Muertos Skull Mask",
+        brandName: "Calaveras y Huesos Inc.",
+        productType: "Festival Mask",
+        img: "https://images.nightcafe.studio/jobs/QfK3pqSshqaI0Wzc7d4N/QfK3pqSshqaI0Wzc7d4N--1--byyw4_2x.jpg?tr=w-1600,c-at_max",
+        description: "A phenomenal mask made by some of Calaveras y Huesos Inc. best in house designers. Celebrate Dia de los Muertos and remember your past loved ones in style. With this Royal Blue and Gold; Gesso and Gold Leaf Dia de los Muertos Skull Mask",
+        price: `$${272.50}`,
+        quantityAvailable: 1,
+        seasons: "Autumn"
+    },
+
+    {
+        name: "Vernal Bride Dress",
+        brandName: "Primavera Designs Company",
+        productType: "Wedding Dress",
+        img: "https://images.nightcafe.studio/jobs/BaXEsvicWNHU5zJFzwxa/JpNIRGoKjc6YQuLEphZl--4--g1zez_2x.jpg?tr=w-1600,c-at_max",
+        description: "",
+        price: `$${2232.99}`,
+        quantityAvailable: 0,
+        seasons: "Spring"
     }
+
 ]
 
 function createProduct(product) {
@@ -33,11 +56,30 @@ function createProduct(product) {
     const productPrice = document.createElement("p");
     productPrice.textContent = product.price;
 
-    const productInStock = document.createElement("p");
-    productInStock.textContent = product.inStock;
+    const productQuantityAvailable = document.createElement("p");
+    productQuantityAvailable.textContent = product.quantityAvailable;
 
     const seasons = document.createElement("p");
     seasons.textContent = product.seasons;
+
+    const productInStock = document.createElement("div");
+    let stockReflect = "In Stock"
+    if (product.quantityAvailable === 0) {
+        stockReflect = "Out Of Stock!"
+    } else if (product.quantityAvailable <=5) {
+        stockReflect = "Limited Stock"
+    }
+    productInStock.textContent = stockReflect;
+    productInStock.addEventListener("click", (event) => {
+        event.preventDefault();
+    })
+
+    const removeButton = document.createElement("button");
+    removeButton.textContent = "Remove Product"
+    removeButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        productContainer.remove();
+    })
 
     productContainer.append(
         productImageUrl,
@@ -46,8 +88,10 @@ function createProduct(product) {
         productType,
         productDescription,
         productPrice,
-        productInStock,
+        productQuantityAvailable,
         seasons,
+        productInStock,
+        removeButton
     )
 
     const main = document.querySelector("main");
@@ -67,6 +111,14 @@ formElement.addEventListener("submit", (event) => {
     const inStock = formElement.productInStock.value;
     const seasons = formElement.seasons.value;
 
+    const errorMessage = document.querySelector("p");
+
+    if (name === "" || brandName === "" || productType === "" || description === "" || price === 0 || inStock === 0) {
+        errorMessage.textContent = "Please fill out the required fields above!"
+    }
+
+    formElement.reset()
+
     createProduct({
         name,
         brandName,
@@ -77,6 +129,15 @@ formElement.addEventListener("submit", (event) => {
         inStock,
         seasons
     })
+})
+
+const main = document.querySelector("main");
+const clearCatalogue = document.querySelector("#remove-button");
+clearCatalogue.addEventListener("click", (event) => {
+    event.preventDefault();
+    while (main.firstChild) {
+        main.removeChild(main.firstChild);
+    }
 })
 
 for (const product of productsList) {
