@@ -71,12 +71,14 @@ function createProduct(product) {
     } else if (product.quantityAvailable <= 5) {
         stockReflect = "Limited Stock"
     }
+    productInStock.className = "stock";
     productInStock.textContent = stockReflect;
     productInStock.addEventListener("click", (event) => {
         event.preventDefault();
     })
 
     const removeButton = document.createElement("button");
+    removeButton.className = "removeProduct";
     removeButton.textContent = "Remove Product"
     removeButton.addEventListener("click", (event) => {
         event.preventDefault();
