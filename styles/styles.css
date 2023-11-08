@@ -1,5 +1,63 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#main-body {
+    padding: 30px;
+}
+
+#main-body div {
+    margin: 5px;
+}
+
+#new-product-form {
+    padding: 30px;
+}
+
+.product-card {
+    
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 20px;
+    border: 2px solid black;
+}
+
+img {
+    height: 400px;
+    width: 400px;
+}
+
 h1 {
     text-align: center;
-    font-size: 40px;
+    font-size: 60px;
     color: royalblue;
+    text-shadow: 5px 5px 5px gold;
 }
+
+.required {
+    color: firebrick;
+}
+
+/*Media Query*/
+@media (max-width: 1200px) {
+
+    #title {
+        font-size: 30px;
+    }
+
+    .description{
+        display: none;
+    }
+
+    .seasons {
+        display: none;
+    }
+}
+
+
+/* 
+First - 2 media queries 1)750 - 1200 2) below 750
+Second - Header changing color according to season
+Third - Background wallpaper changing according to season
+Fourth - Product in stock color changing according to availability */

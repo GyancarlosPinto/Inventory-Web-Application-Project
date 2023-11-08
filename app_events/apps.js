@@ -38,10 +38,10 @@ function createProduct(product) {
     const productContainer = document.createElement("div");
     productContainer.classList.add("product-card");
 
-    const productName = document.createElement("strong");
+    const productName = document.createElement("p");
     productName.textContent = product.name;
 
-    const productBrandName = document.createElement("em");
+    const productBrandName = document.createElement("p");
     productBrandName.textContent = product.brandName;
 
     const productType = document.createElement("p");
@@ -51,6 +51,7 @@ function createProduct(product) {
     productImageUrl.setAttribute("src", product.img);
 
     const productDescription = document.createElement("p");
+    productDescription.className = "description";
     productDescription.textContent = product.description;
 
     const productPrice = document.createElement("p");
@@ -60,13 +61,14 @@ function createProduct(product) {
     productQuantityAvailable.textContent = product.quantityAvailable;
 
     const seasons = document.createElement("p");
+    seasons.className = "seasons"
     seasons.textContent = product.seasons;
 
     const productInStock = document.createElement("div");
     let stockReflect = "In Stock"
     if (product.quantityAvailable === 0) {
         stockReflect = "Out Of Stock!"
-    } else if (product.quantityAvailable <=5) {
+    } else if (product.quantityAvailable <= 5) {
         stockReflect = "Limited Stock"
     }
     productInStock.textContent = stockReflect;
@@ -95,7 +97,7 @@ function createProduct(product) {
     )
 
     const main = document.querySelector("main");
-    main.append(productContainer)
+    main.prepend(productContainer)
 }
 
 const formElement = document.querySelector("#new-product-form");
@@ -108,11 +110,10 @@ formElement.addEventListener("submit", (event) => {
     const img = formElement.productImageUrl.value;
     const description = formElement.productDescription.value;
     const price = formElement.productPrice.value;
-    const quantityAvailable = formElement.productQuantityAvailable.value;
-    const inStock = formElement.productInStock.value;
+    const quantityAvailable = formElement.quantityAvailable.value;
     const seasons = formElement.seasons.value;
 
-    const errorMessage = document.querySelector("p");
+    const errorMessage = document.querySelector("#error-message");
 
     if (name === "" || brandName === "" || productType === "" || description === "" || price === 0 || quantityAvailable === 0) {
         errorMessage.textContent = "Please fill out the required fields above!"
@@ -129,7 +130,6 @@ formElement.addEventListener("submit", (event) => {
         price,
         quantityAvailable,
         seasons,
-        inStock
     })
 })
 
