@@ -55,7 +55,7 @@ function createProduct(product) {
     productDescription.textContent = product.description;
 
     const productPrice = document.createElement("p");
-    productPrice.textContent = product.price;
+    productPrice.textContent = `$${product.price}`;
 
     const productQuantityAvailable = document.createElement("p");
     productQuantityAvailable.textContent = product.quantityAvailable;
@@ -65,13 +65,17 @@ function createProduct(product) {
     seasons.textContent = product.seasons;
 
     const productInStock = document.createElement("div");
-    let stockReflect = "In Stock"
+    let stockReflect = "In Stock";
     if (product.quantityAvailable === 0) {
-        stockReflect = "Out Of Stock!"
-    } else if (product.quantityAvailable <= 5) {
+        stockReflect = "Out of Stock!"
+        productInStock.classList.add("out-of-stock");
+    } else if (product.quantityAvailable <= 10) {
         stockReflect = "Limited Stock"
+        productInStock.classList.add("limited-stock");
+    } else {
+        productInStock.classList.add("in-stock");
     }
-    productInStock.className = "stock";
+    productInStock.classList.add("stock");
     productInStock.textContent = stockReflect;
     productInStock.addEventListener("click", (event) => {
         event.preventDefault();
