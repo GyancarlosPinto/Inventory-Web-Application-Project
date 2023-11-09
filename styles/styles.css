@@ -61,6 +61,7 @@
 
 #title {
     background-color: orange;
+    opacity: 0.5;
 }
 
 h1 {
@@ -102,6 +103,14 @@ h2 {
     height: 720px;
 }
 
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px;
+    width: 400px;
+}
+
 .card-info, .card-footer {
     display: flex;
     justify-content: space-evenly;
@@ -109,8 +118,9 @@ h2 {
 
 .remove-product {
     font-weight: bold;
-    border-radius: 30px;
-    background-color: red;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: firebrick;;
     width: 25%;
     padding: 1em 1em;
     
@@ -128,17 +138,9 @@ h2 {
     background-color: red;
 }
 
-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 400px;
-    width: 400px;
-}
-
 .stock {
     text-align: center;
-    border: 2px solid black;
+    border: 2px solid silver;
     border-radius: 10px;
     width: 15%;
     padding: 1em 1em;
