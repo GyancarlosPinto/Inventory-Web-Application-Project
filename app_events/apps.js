@@ -5,7 +5,7 @@ const productsList = [
         productType: "Kegerator",
         img: "https://images.nightcafe.studio/jobs/0dcuv9GCYC8TXqwlaJEG/0dcuv9GCYC8TXqwlaJEG--1--nqej0.jpg?tr=w-1600,c-at_max",
         description: "Keep your lager, ale, stout or IPA cool to the bones during the ghoully season with this Dracula Beer Keg Dispenser Kegerator.",
-        price: `$${1392.00}`,
+        price: `${1392.00}`,
         quantityAvailable: 19,
         seasons: "Autumn"
     },
@@ -16,7 +16,7 @@ const productsList = [
         productType: "Festival Mask",
         img: "https://images.nightcafe.studio/jobs/QfK3pqSshqaI0Wzc7d4N/QfK3pqSshqaI0Wzc7d4N--1--byyw4_2x.jpg?tr=w-1600,c-at_max",
         description: "A phenomenal mask made by some of Calaveras y Huesos Inc. best in house designers. Celebrate Dia de los Muertos and remember your past loved ones in style. With this Royal Blue and Gold; Gesso and Gold Leaf Dia de los Muertos Skull Mask",
-        price: `$${272.50}`,
+        price: `${272.50}`,
         quantityAvailable: 1,
         seasons: "Autumn"
     },
@@ -27,7 +27,7 @@ const productsList = [
         productType: "Wedding Dress",
         img: "https://images.nightcafe.studio/jobs/BaXEsvicWNHU5zJFzwxa/JpNIRGoKjc6YQuLEphZl--4--g1zez_2x.jpg?tr=w-1600,c-at_max",
         description: "",
-        price: `$${2232.99}`,
+        price: `${2232.99}`,
         quantityAvailable: 0,
         seasons: "Spring"
     }
@@ -52,7 +52,7 @@ function createProduct(product) {
 
     const productDescription = document.createElement("p");
     productDescription.className = "description";
-    productDescription.textContent = product.description;
+    productDescription.textContent = `Description: ${product.description}`;
 
     const productPrice = document.createElement("p");
     productPrice.textContent = `$${product.price}`;
@@ -90,11 +90,11 @@ function createProduct(product) {
     })
 
     productContainer.append(
-        productImageUrl,
         productName,
         productBrandName,
-        productType,
+        productImageUrl,
         productDescription,
+        productType,
         productPrice,
         productQuantityAvailable,
         seasons,
