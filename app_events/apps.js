@@ -89,17 +89,26 @@ function createProduct(product) {
         productContainer.remove();
     })
 
+    const cardInfo = document.createElement("div");
+    cardInfo.className = "card-info";
+    cardInfo.append(        
+        productType,
+        productPrice,
+        productQuantityAvailable,
+        seasons
+        );
+
+    const cardFooter = document.createElement("div");
+    cardFooter.className = "card-footer";
+    cardFooter.append(productInStock, removeButton);
+
     productContainer.append(
         productName,
         productBrandName,
         productImageUrl,
         productDescription,
-        productType,
-        productPrice,
-        productQuantityAvailable,
-        seasons,
-        productInStock,
-        removeButton
+        cardInfo,
+        cardFooter
     )
 
     const main = document.querySelector("main");
