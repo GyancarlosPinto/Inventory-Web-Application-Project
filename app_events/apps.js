@@ -125,7 +125,7 @@ formElement.addEventListener("submit", (event) => {
         errorMessage.textContent = "Please fill out the required fields above!"
     }
 
-    formElement.reset()
+    formElement.reset();
 
     createProduct({
         name,
