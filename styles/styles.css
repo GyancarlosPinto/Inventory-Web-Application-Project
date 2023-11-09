@@ -102,6 +102,11 @@ h2 {
     height: 720px;
 }
 
+.card-info, .card-footer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .remove-product {
     font-weight: bold;
     border-radius: 30px;
