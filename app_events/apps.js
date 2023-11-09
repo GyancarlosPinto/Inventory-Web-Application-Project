@@ -82,7 +82,7 @@ function createProduct(product) {
     })
 
     const removeButton = document.createElement("button");
-    removeButton.className = "removeProduct";
+    removeButton.className = "remove-product";
     removeButton.textContent = "Remove Product"
     removeButton.addEventListener("click", (event) => {
         event.preventDefault();
