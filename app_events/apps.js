@@ -123,20 +123,20 @@ formElement.addEventListener("submit", (event) => {
 
     if (name === "" || brandName === "" || productType === "" || description === "" || price === 0 || quantityAvailable === 0) {
         errorMessage.textContent = "Please fill out the required fields above!"
+    } else {
+        formElement.reset();
+
+        createProduct({
+            name,
+            brandName,
+            productType,
+            img,
+            description,
+            price,
+            quantityAvailable,
+            seasons,
+        })
     }
-
-    formElement.reset();
-
-    createProduct({
-        name,
-        brandName,
-        productType,
-        img,
-        description,
-        price,
-        quantityAvailable,
-        seasons,
-    })
 })
 
 const main = document.querySelector("main");
