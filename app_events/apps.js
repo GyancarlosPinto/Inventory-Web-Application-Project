@@ -4,7 +4,7 @@ const productsList = [
         brandName: "Fangsylvania Brewing Company",
         productType: "Kegerator",
         img: "https://images.nightcafe.studio/jobs/0dcuv9GCYC8TXqwlaJEG/0dcuv9GCYC8TXqwlaJEG--1--nqej0.jpg?tr=w-1600,c-at_max",
-        description: "Keep your lager, ale, stout or IPA cool to the bones during the ghoully season with this Dracula Beer Keg Dispenser Kegerator.",
+        description: "Elevate your Halloween festivities to spine-chilling heights with the Dracula Beer Keg Dispenser Kegerator. This hauntingly unique appliance will keep your favorite lagers, ales, stouts, or IPAs perfectly chilled as you embrace the ghoulish spirit of the season. With its macabre yet stylish design, it's not just a kegerator; it's a conversation starter that will make your Halloween party a night to remember.",
         price: `${1392.00}`,
         quantityAvailable: 19,
         seasons: "Autumn"
@@ -15,7 +15,7 @@ const productsList = [
         brandName: "Calaveras y Huesos Inc.",
         productType: "Festival Mask",
         img: "https://images.nightcafe.studio/jobs/QfK3pqSshqaI0Wzc7d4N/QfK3pqSshqaI0Wzc7d4N--1--byyw4_2x.jpg?tr=w-1600,c-at_max",
-        description: "A phenomenal mask made by some of Calaveras y Huesos Inc. best in house designers. Celebrate Dia de los Muertos and remember your past loved ones in style. With this Royal Blue and Gold; Gesso and Gold Leaf Dia de los Muertos Skull Mask",
+        description: "A phenomenal Dia de los Muertos mask made by some of Calaveras y Huesos Inc. best in house designers. Celebrate Dia de los Muertos and remember your past loved ones in style with this Royal Blue and Gold; Gesso and Gold Leaf Dia de los Muertos Skull Mask",
         price: `${272.50}`,
         quantityAvailable: 1,
         seasons: "Autumn"
