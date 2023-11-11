@@ -26,7 +26,7 @@ const productsList = [
         brandName: "Primavera Designs Company",
         productType: "Wedding Dress",
         img: "https://images.nightcafe.studio/jobs/BaXEsvicWNHU5zJFzwxa/JpNIRGoKjc6YQuLEphZl--4--g1zez_2x.jpg?tr=w-1600,c-at_max",
-        description: "",
+        description: "This enchanting Spring Wedding dress captures the essence of the season with its exquisite floral-inspired design. Delicate blossoms and intricate vines adorn the bodice, creating a sense of natural beauty and elegance. The A-line silhouette and flowing layers of chiffon add a touch of romance, making this gown perfect for a Spring wedding, where love and nature come together in a harmonious celebration.",
         price: `${2232.99}`,
         quantityAvailable: 0,
         seasons: "Spring"
@@ -45,7 +45,7 @@ function createProduct(product) {
     productBrandName.textContent = product.brandName;
 
     const productType = document.createElement("p");
-    productType.textContent = product.productType;
+    productType.textContent = `Product Type: ${product.productType}`;
 
     const productImageUrl = document.createElement("img");
     productImageUrl.setAttribute("src", product.img);
@@ -55,14 +55,14 @@ function createProduct(product) {
     productDescription.textContent = `Description: ${product.description}`;
 
     const productPrice = document.createElement("p");
-    productPrice.textContent = `$${product.price}`;
+    productPrice.textContent = `Price: $${product.price}`;
 
     const productQuantityAvailable = document.createElement("p");
-    productQuantityAvailable.textContent = product.quantityAvailable;
+    productQuantityAvailable.textContent = `Quantity Available: ${product.quantityAvailable}`;
 
     const seasons = document.createElement("p");
     seasons.className = "seasons"
-    seasons.textContent = product.seasons;
+    seasons.textContent = `Season: ${product.seasons}`;
 
     const productInStock = document.createElement("div");
     let stockReflect = "In Stock";
