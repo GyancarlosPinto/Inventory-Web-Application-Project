@@ -34,20 +34,27 @@ const productsList = [
 
 ]
 
+let currentlySelected = null;
+let currentIndex = -1;
+
 function createProduct(product) {
     const productContainer = document.createElement("div");
     productContainer.classList.add("product-card");
 
     const productName = document.createElement("p");
+    productName.className = "name";
     productName.textContent = product.name;
 
     const productBrandName = document.createElement("p");
+    productBrandName.className = "brand-name";
     productBrandName.textContent = product.brandName;
 
     const productType = document.createElement("p");
+    productType.className = "type";
     productType.textContent = `Product Type: ${product.productType}`;
 
     const productImageUrl = document.createElement("img");
+    productImageUrl.className = "card-img";
     productImageUrl.setAttribute("src", product.img);
 
     const productDescription = document.createElement("p");
@@ -55,9 +62,11 @@ function createProduct(product) {
     productDescription.textContent = `Description: ${product.description}`;
 
     const productPrice = document.createElement("p");
+    productPrice.className = "price";
     productPrice.textContent = `Price: $${product.price}`;
 
     const productQuantityAvailable = document.createElement("p");
+    productQuantityAvailable.className = "quantity";
     productQuantityAvailable.textContent = `Quantity Available: ${product.quantityAvailable}`;
 
     const seasons = document.createElement("p");
@@ -81,9 +90,36 @@ function createProduct(product) {
         event.preventDefault();
     })
 
+    const editButton = document.createElement("button");
+    editButton.className = "edit-product";
+    editButton.textContent = "Edit";
+    editButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        currentlySelected = productContainer;
+        currentIndex = productsList.indexOf(product);
+
+        document.querySelector(".hidden").classList.remove("hidden");
+        const nameField = document.querySelector("#edit-product-form input[name='productName']");
+        nameField.value = product.name;
+        const brandField = document.querySelector("#edit-product-form input[name='productBrandName']");
+        brandField.value = product.brandName;
+        const typeField = document.querySelector("#edit-product-form input[name='productType']");
+        typeField.value = product.productType;
+        const imgField = document.querySelector("#edit-product-form input[name='productImageUrl']");
+        imgField.value = product.img;
+        const descField = document.querySelector("#edit-product-form textarea[name='productDescription']");
+        descField.value = product.description;
+        const priceField = document.querySelector("#edit-product-form input[name='productPrice']");
+        priceField.value = Number(product.price);
+        const quantityField = document.querySelector("#edit-product-form input[name='quantityAvailable']");
+        quantityField.value = Number(product.quantityAvailable);
+        const seasonField = document.querySelector("#edit-product-form select[name='seasons']");
+        seasonField.value = product.seasons;
+    })
+
     const removeButton = document.createElement("button");
     removeButton.className = "remove-product";
-    removeButton.textContent = "Remove Product"
+    removeButton.textContent = "Remove"
     removeButton.addEventListener("click", (event) => {
         event.preventDefault();
         productContainer.remove();
@@ -100,7 +136,7 @@ function createProduct(product) {
 
     const cardFooter = document.createElement("div");
     cardFooter.className = "card-footer";
-    cardFooter.append(productInStock, removeButton);
+    cardFooter.append(editButton, removeButton);
 
     productContainer.append(
         productName,
@@ -108,6 +144,7 @@ function createProduct(product) {
         productImageUrl,
         productDescription,
         cardInfo,
+        productInStock,
         cardFooter
     )
 
@@ -146,6 +183,61 @@ formElement.addEventListener("submit", (event) => {
             seasons,
         })
     }
+})
+
+const editedProduct = document.querySelector("#edit-product-form");
+editedProduct.addEventListener("submit", (event) =>{
+    event.preventDefault();
+    const nameField = document.querySelector("#edit-product-form input[name='productName']").value;
+    const brandField = document.querySelector("#edit-product-form input[name='productBrandName']").value;
+    const typeField = document.querySelector("#edit-product-form input[name='productType']").value;
+    const imgField = document.querySelector("#edit-product-form input[name='productImageUrl']").value;
+    const descField = document.querySelector("#edit-product-form textarea[name='productDescription']").value;
+    const priceField = Number(document.querySelector("#edit-product-form input[name='productPrice']").value);
+    const quantityField = Number(document.querySelector("#edit-product-form input[name='quantityAvailable']").value);
+    const seasonField = document.querySelector("#edit-product-form select[name='seasons']").value;
+
+    const updatedProduct = {
+        name: nameField,
+        brandName: brandField,
+        productType: typeField,
+        img: imgField,
+        description: descField,
+        price: priceField,
+        quantityAvailable: quantityField,
+        seasons: seasonField
+      };
+
+      productsList[currentIndex] = updatedProduct
+
+      currentlySelected.querySelector(".name").textContent = nameField;
+      currentlySelected.querySelector(".brand-name").textContent = brandField;
+      currentlySelected.querySelector(".type").textContent = typeField;
+      currentlySelected.querySelector(".card-img").textContent = imgField;
+      currentlySelected.querySelector(".description").textContent = descField;
+      currentlySelected.querySelector(".price").textContent = priceField;
+      currentlySelected.querySelector(".quantity").textContent = quantityField;
+      currentlySelected.querySelector(".seasons").textContent = seasonField;
+
+      document.querySelector("#edit-product-form").classList.add("hidden");
+
+      let stockReflect = "In Stock";
+      const stock = document.querySelector(".stock")
+      stock.classList.remove("out-of-stock")
+      stock.classList.remove("limited-stock")
+      stock.classList.remove("in-stock")
+    if (quantityField === 0) {
+        stockReflect = "Out of Stock!"
+        stock.classList.add("out-of-stock");
+    } else if (quantityField <= 10) {
+        stockReflect = "Limited Stock"
+        stock.classList.add("limited-stock");
+    } else {
+        stock.classList.add("in-stock");
+    }
+    stock.textContent = stockReflect;
+
+    editedProduct.reset();
 })
 
 const main = document.querySelector("main");
