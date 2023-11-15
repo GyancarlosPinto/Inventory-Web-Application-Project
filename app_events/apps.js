@@ -222,7 +222,7 @@ editedProduct.addEventListener("submit", (event) =>{
       document.querySelector("#edit-product-form").classList.add("hidden");
 
       let stockReflect = "In Stock";
-      const stock = document.querySelector(".stock")
+      const stock = currentlySelected.querySelector(".stock")
       stock.classList.remove("out-of-stock")
       stock.classList.remove("limited-stock")
       stock.classList.remove("in-stock")
