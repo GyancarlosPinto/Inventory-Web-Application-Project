@@ -22,7 +22,7 @@ const productsList = [
     },
 
     {
-        name: "Vernal Bride Dress",
+        name: "Vernal Bridal Dress",
         brandName: "Primavera Designs Company",
         productType: "Wedding Dress",
         img: "https://images.nightcafe.studio/jobs/BaXEsvicWNHU5zJFzwxa/JpNIRGoKjc6YQuLEphZl--4--g1zez_2x.jpg?tr=w-1600,c-at_max",
@@ -34,21 +34,27 @@ const productsList = [
 
 ]
 
+// LET currentlySelected equal null
 let currentlySelected = null;
+// LET currentIndex equal -1
 let currentIndex = -1;
-
+// function createProduct with param product used to generate a product card
 function createProduct(product) {
+    // productContainer handles the creation of overall card with div element and product-card class
     const productContainer = document.createElement("div");
     productContainer.classList.add("product-card");
 
+    // productName handles the creation of products name with a p element and name class
     const productName = document.createElement("p");
     productName.className = "name";
     productName.textContent = product.name;
 
+    // productBrandName handles the creation of products name with a p element and brand-name class
     const productBrandName = document.createElement("p");
     productBrandName.className = "brand-name";
     productBrandName.textContent = product.brandName;
 
+    // Repeat the above process for other elements (productType, productImageUrl, productDescription, productPrice, productQuantityAvailable, seasons)
     const productType = document.createElement("p");
     productType.className = "type";
     productType.textContent = `Product Type: ${product.productType}`;
@@ -73,29 +79,49 @@ function createProduct(product) {
     seasons.className = "seasons"
     seasons.textContent = `Season: ${product.seasons}`;
 
+    // productInStock is created with the div element
     const productInStock = document.createElement("div");
+    // LET stockReflect equal str In Stock
     let stockReflect = "In Stock";
+    // IF quantityAvailable strictly equals 0
     if (product.quantityAvailable === 0) {
+        // stockReflect changes to Out of Stock!
         stockReflect = "Out of Stock!"
+        // add class out-of-stock!
         productInStock.classList.add("out-of-stock");
+    // ELSE IF quantityAvailable is less than or equal 10
     } else if (product.quantityAvailable <= 10) {
+        // stockReflect changes to Limited Stock
         stockReflect = "Limited Stock"
+        // add class limited-stock
         productInStock.classList.add("limited-stock");
     } else {
+        // ELSE add class in-stock
         productInStock.classList.add("in-stock");
     }
+    // add class stock to productInStock overall
     productInStock.classList.add("stock");
+    // the text content of productInStock equals stockReflect
     productInStock.textContent = stockReflect;
+    // add a click event listener to productInStock
     productInStock.addEventListener("click", (event) => {
+        // event prevent default to prevent default behavior of event 
         event.preventDefault();
     })
 
+    // CONST editButton contains the created element button for ediitng 
     const editButton = document.createElement("button");
+    // gives editButton class name of edit-product
     editButton.className = "edit-product";
+    // gives editButton the text content of Edit
     editButton.textContent = "Edit";
+    // editButton add event listener allows for a click event to be added to the button
     editButton.addEventListener("click", (event) => {
+        // event prevent default to prevent default behavior of event 
         event.preventDefault();
+        // currentlySelected now equals whats in productContainer
         currentlySelected = productContainer;
+        // currentIndex is now equal to productsList.indexOf param product
         currentIndex = productsList.indexOf(product);
 
         document.querySelector(".hidden").classList.remove("hidden");
@@ -121,6 +147,7 @@ function createProduct(product) {
     removeButton.className = "remove-product";
     removeButton.textContent = "Remove"
     removeButton.addEventListener("click", (event) => {
+        // event prevent default to prevent default behavior of event 
         event.preventDefault();
         productContainer.remove();
     })
@@ -154,8 +181,10 @@ function createProduct(product) {
 
 const formElement = document.querySelector("#new-product-form");
 formElement.addEventListener("submit", (event) => {
+    // event prevent default to prevent default behavior of event 
     event.preventDefault();
 
+    // CONST name, brandName, productType, img, description, price, quantityAvailable and seasons hold their respective formElement key values
     const name = formElement.productName.value;
     const brandName = formElement.productBrandName.value;
     const productType = formElement.productType.value;
@@ -165,13 +194,17 @@ formElement.addEventListener("submit", (event) => {
     const quantityAvailable = formElement.quantityAvailable.value;
     const seasons = formElement.seasons.value;
 
+    // CONST errorMessage contains the document #error-message
     const errorMessage = document.querySelector("#error-message");
-
+    // IF name, brandName, productType, description, price and quantityAvailable are empty
     if (name === "" || brandName === "" || productType === "" || description === "" || price === 0 || quantityAvailable === 0) {
+        // an errorMessage with the text "Please fill out the required fields above!" will appear
         errorMessage.textContent = "Please fill out the required fields above!"
     } else {
+        // ELSE once submitted reset the foreElement
         formElement.reset();
 
+        //createProduct with key values listed out below
         createProduct({
             name,
             brandName,
@@ -187,6 +220,7 @@ formElement.addEventListener("submit", (event) => {
 
 const editedProduct = document.querySelector("#edit-product-form");
 editedProduct.addEventListener("submit", (event) =>{
+    // event prevent default to prevent default behavior of event 
     event.preventDefault();
     const nameField = document.querySelector("#edit-product-form input[name='productName']").value;
     const brandField = document.querySelector("#edit-product-form input[name='productBrandName']").value;
@@ -219,17 +253,25 @@ editedProduct.addEventListener("submit", (event) =>{
       currentlySelected.querySelector(".quantity").textContent = quantityField;
       currentlySelected.querySelector(".seasons").textContent = seasonField;
 
+      // querySelector #edit-product-form to add hidden class to it 
       document.querySelector("#edit-product-form").classList.add("hidden");
 
+      // LET stockReflect equal str In Stock
       let stockReflect = "In Stock";
       const stock = currentlySelected.querySelector(".stock")
+      // .remove method is used to remove classes in-stock, limited-stock and out-of-stock
       stock.classList.remove("out-of-stock")
       stock.classList.remove("limited-stock")
       stock.classList.remove("in-stock")
+    // IF quantityAvailable strictly equals 0
     if (quantityField === 0) {
+        // stockReflect changes to Out of Stock!
         stockReflect = "Out of Stock!"
+        // add class out-of-stock!
         stock.classList.add("out-of-stock");
+    // ELSE IF quantityAvailable is less than or equal 10
     } else if (quantityField <= 10) {
+
         stockReflect = "Limited Stock"
         stock.classList.add("limited-stock");
     } else {
@@ -243,13 +285,15 @@ editedProduct.addEventListener("submit", (event) =>{
 const main = document.querySelector("main");
 const clearCatalogue = document.querySelector("#remove-button");
 clearCatalogue.addEventListener("click", (event) => {
+    // event prevent default to prevent default behavior of event 
     event.preventDefault();
     while (main.firstChild) {
         main.removeChild(main.firstChild);
     }
 })
 
+// FOR product iterates through productsList 
 for (const product of productsList) {
+    // createProduct function with param product creates the product cards for productsList
     createProduct(product);
 }
-
